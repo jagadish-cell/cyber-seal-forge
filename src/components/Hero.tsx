@@ -89,6 +89,10 @@ const Hero = () => {
               variant="outline" 
               size="lg"
               className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+              onClick={() => {
+                // TODO: Replace with actual resume URL when provided
+                window.open('#', '_blank');
+              }}
             >
               <Download className="w-5 h-5 mr-2" />
               Download Resume
