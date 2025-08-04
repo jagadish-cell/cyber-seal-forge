@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ArrowRight, Download, Mail } from 'lucide-react';
 import cyberHeroBg from '@/assets/cyber-hero-bg.jpg';
+import profileImage from '@/assets/profile.jpg';
 
 const Hero = () => {
   const [text, setText] = useState('');
@@ -47,7 +48,7 @@ const Hero = () => {
           <div className="mb-8">
             <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto border-4 border-accent/50 shadow-elegant">
               <AvatarImage 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
+                src={profileImage} 
                 alt="Bandi Naga Jagadish" 
               />
               <AvatarFallback className="text-2xl font-bold bg-accent/20 text-accent">
