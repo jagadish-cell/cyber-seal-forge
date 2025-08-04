@@ -61,6 +61,9 @@ const Navigation = () => {
                 variant="outline"
                 size="sm"
                 className="ml-4 border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+                onClick={() => {
+                  window.open('https://drive.google.com/uc?export=download&id=1CLkiys2s1a0RzJ6TZI0x3QFy5dNDfDkm', '_blank');
+                }}
               >
                 <Download className="w-4 h-4 mr-2" />
                 Resume
@@ -93,11 +96,14 @@ const Navigation = () => {
                   {item.name}
                 </button>
               ))}
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-full mt-4 border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-              >
+               <Button
+                 variant="outline"
+                 size="sm"
+                 className="w-full mt-4 border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+                 onClick={() => {
+                   window.open('https://drive.google.com/uc?export=download&id=1CLkiys2s1a0RzJ6TZI0x3QFy5dNDfDkm', '_blank');
+                 }}
+               >
                 <Download className="w-4 h-4 mr-2" />
                 Download Resume
               </Button>
