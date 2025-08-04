@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ArrowRight, Download, Mail } from 'lucide-react';
 import cyberHeroBg from '@/assets/cyber-hero-bg.jpg';
 
@@ -42,6 +43,19 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 section-container text-center">
         <div className="max-w-4xl mx-auto animate-fade-in">
+          {/* Profile Image */}
+          <div className="mb-8">
+            <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto border-4 border-accent/50 shadow-elegant">
+              <AvatarImage 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
+                alt="Bandi Naga Jagadish" 
+              />
+              <AvatarFallback className="text-2xl font-bold bg-accent/20 text-accent">
+                BJ
+              </AvatarFallback>
+            </Avatar>
+          </div>
+          
           {/* Typing Animation */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
             <span className="text-glow">{text}</span>
