@@ -13,7 +13,8 @@ const Certifications = () => {
       description: "Comprehensive cybersecurity certification covering security principles, risk management, and incident response.",
       skills: ["Risk Management", "Security Controls", "Incident Response", "Access Control"],
       verifyUrl: "#",
-      featured: true
+      featured: true,
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=200&fit=crop"
     },
     {
       icon: Code,
@@ -23,17 +24,8 @@ const Certifications = () => {
       description: "Full-stack web development certification covering modern frameworks and best practices.",
       skills: ["React.js", "Node.js", "Database Design", "API Development"],
       verifyUrl: "#",
-      featured: false
-    },
-    {
-      icon: Users,
-      title: "Special Cyber Security Training Program",
-      issuer: "Industry Training",
-      date: "2023",
-      description: "Specialized training program focusing on advanced cybersecurity techniques and real-world scenarios.",
-      skills: ["Penetration Testing", "Ethical Hacking", "Vulnerability Analysis", "Security Auditing"],
-      verifyUrl: "#",
-      featured: false
+      featured: false,
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=200&fit=crop"
     }
   ];
 
@@ -49,7 +41,7 @@ const Certifications = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {certifications.map((cert, index) => (
             <Card 
               key={index} 
@@ -58,6 +50,15 @@ const Certifications = () => {
               }`}
             >
               <CardHeader className="text-center pb-4">
+                {/* Certification Image */}
+                <div className="mb-4 overflow-hidden rounded-lg">
+                  <img 
+                    src={cert.image} 
+                    alt={cert.title}
+                    className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                
                 <div className="flex justify-center mb-4">
                   <div className={`p-3 rounded-full ${
                     cert.featured ? 'bg-accent/20' : 'bg-muted/20'
@@ -133,7 +134,7 @@ const Certifications = () => {
               </p>
               <div className="grid md:grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-accent">3+</div>
+                  <div className="text-2xl font-bold text-accent">2+</div>
                   <div className="text-sm text-muted-foreground">Professional Certifications</div>
                 </div>
                 <div>
