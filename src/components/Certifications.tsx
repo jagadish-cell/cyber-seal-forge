@@ -11,7 +11,7 @@ const Certifications = () => {
       icon: Shield,
       title: "Certified in Cyber Security (CC)",
       issuer: "ISC2",
-      date: "2024",
+      date: "2025",
       description: "Comprehensive cybersecurity certification covering security principles, risk management, and incident response.",
       skills: ["Risk Management", "Security Controls", "Incident Response", "Access Control"],
       verifyUrl: "#",
@@ -22,7 +22,7 @@ const Certifications = () => {
       icon: Code,
       title: "Web Development Certification",
       issuer: "Udemy",
-      date: "2023",
+      date: "2025",
       description: "Full-stack web development certification covering modern frameworks and best practices.",
       skills: ["React.js", "Node.js", "Database Design", "API Development"],
       verifyUrl: "#",
@@ -57,7 +57,7 @@ const Certifications = () => {
                   <img 
                     src={cert.image} 
                     alt={cert.title}
-                    className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 
@@ -140,11 +140,11 @@ const Certifications = () => {
                   <div className="text-sm text-muted-foreground">Professional Certifications</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-accent">50+</div>
-                  <div className="text-sm text-muted-foreground">Hours of Training</div>
+                  <div className="text-2xl font-bold text-accent">2022-2026</div>
+                  <div className="text-sm text-muted-foreground">Academic Years</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-accent">2024</div>
+                  <div className="text-2xl font-bold text-accent">2025</div>
                   <div className="text-sm text-muted-foreground">Latest Certification</div>
                 </div>
               </div>
