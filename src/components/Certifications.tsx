@@ -2,6 +2,8 @@ import { Award, ExternalLink, Shield, Code, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import ccCertImage from '@/assets/cc-certification.png';
+import webDevCertImage from '@/assets/web-dev-certification.png';
 
 const Certifications = () => {
   const certifications = [
@@ -14,7 +16,7 @@ const Certifications = () => {
       skills: ["Risk Management", "Security Controls", "Incident Response", "Access Control"],
       verifyUrl: "#",
       featured: true,
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=200&fit=crop"
+      image: ccCertImage
     },
     {
       icon: Code,
@@ -25,7 +27,7 @@ const Certifications = () => {
       skills: ["React.js", "Node.js", "Database Design", "API Development"],
       verifyUrl: "#",
       featured: false,
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=200&fit=crop"
+      image: webDevCertImage
     }
   ];
 
