@@ -1,27 +1,10 @@
-import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ArrowRight, Download, Mail } from 'lucide-react';
-import cyberHeroBg from '@/assets/cyber-hero-bg.jpg';
+import heroBg from '@/assets/hero-bg.webp';
 import profileImage from '@/assets/profile.jpg';
 
 const Hero = () => {
-  const [text, setText] = useState('');
-  const fullText = "Hi, I'm Bandi Naga Jagadish";
-  
-  useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < fullText.length) {
-        setText(fullText.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
-    
-    return () => clearInterval(timer);
-  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -35,7 +18,7 @@ const Hero = () => {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${cyberHeroBg})` }}
+        style={{ backgroundImage: `url(${heroBg})` }}
       />
       
       {/* Overlay */}
@@ -45,7 +28,7 @@ const Hero = () => {
       <div className="relative z-10 section-container text-center">
         <div className="max-w-4xl mx-auto animate-fade-in">
           {/* Profile Image */}
-          <div className="mb-8">
+          <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto border-4 border-accent/50 shadow-elegant">
               <AvatarImage 
                 src={profileImage} 
@@ -57,25 +40,24 @@ const Hero = () => {
             </Avatar>
           </div>
           
-          {/* Typing Animation */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-            <span className="text-glow">{text}</span>
-            <span className="animate-pulse text-accent">|</span>
+          {/* Name */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in text-glow" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+            Hi, I'm Bandi Naga Jagadish
           </h1>
           
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
             Cybersecurity Enthusiast & Full Stack Developer
           </p>
           
           {/* Description */}
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
             B.Tech Cyber Security student passionate about ethical hacking, secure web development, 
             and blockchain-based solutions. Turning cybersecurity challenges into innovative solutions.
           </p>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: '1s', animationFillMode: 'both' }}>
             <Button 
               onClick={() => scrollToSection('projects')}
               className="btn-hero group"
