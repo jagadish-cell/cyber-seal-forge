@@ -101,6 +101,26 @@ const Hero = () => {
             </Button>
           </div>
         </div>
+        
+        {/* Arrow and Box Element */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+          {/* Arrow pointing down */}
+          <div className="mb-4">
+            <svg width="40" height="60" viewBox="0 0 40 60" className="text-accent">
+              <path 
+                d="M20 5 L20 45 M20 45 L10 35 M20 45 L30 35" 
+                stroke="currentColor" 
+                strokeWidth="3" 
+                fill="none" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          
+          {/* Blue box/frame */}
+          <div className="w-80 h-16 border-2 border-accent rounded-lg bg-accent/10 animate-pulse"></div>
+        </div>
       </div>
     </section>
   );
