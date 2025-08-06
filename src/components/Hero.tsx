@@ -67,7 +67,7 @@ const Hero = () => {
         </div>
         
         {/* CTA Buttons - Positioned at bottom center */}
-        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4">
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4 pb-2">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{
           animationDelay: '0.8s',
           animationFillMode: 'both'
