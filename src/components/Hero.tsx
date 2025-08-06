@@ -44,46 +44,6 @@ const Hero = () => {
               B.Tech Cyber Security student passionate about ethical hacking, secure web development, 
               and blockchain-based solutions. Turning cybersecurity challenges into innovative solutions.
             </p>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center animate-fade-in" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
-              <Button 
-                onClick={() => scrollToSection('projects')}
-                className="btn-hero group"
-                size="lg"
-              >
-                View My Work
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-accent text-accent hover:bg-accent hover:text-accent-foreground relative"
-                onClick={() => {
-                  window.open('https://drive.google.com/uc?export=download&id=1CLkiys2s1a0RzJ6TZI0x3QFy5dNDfDkm', '_blank');
-                }}
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Download Resume
-                {/* Mouse Animation */}
-                <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 animate-bounce">
-                  <div className="w-4 h-6 border-2 border-accent rounded-full flex justify-center">
-                    <div className="w-0.5 h-2 bg-accent rounded-full mt-1 animate-pulse" />
-                  </div>
-                </div>
-              </Button>
-              
-              <Button 
-                onClick={() => scrollToSection('contact')}
-                variant="ghost" 
-                size="lg"
-                className="text-foreground hover:text-accent"
-              >
-                <Mail className="w-5 h-5 mr-2" />
-                Contact Me
-              </Button>
-            </div>
           </div>
 
           {/* Profile Image */}
@@ -97,6 +57,48 @@ const Hero = () => {
                 BJ
               </AvatarFallback>
             </Avatar>
+          </div>
+        </div>
+        
+        {/* CTA Buttons - Positioned at bottom center */}
+        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
+            <Button 
+              onClick={() => scrollToSection('projects')}
+              className="btn-hero group"
+              size="lg"
+            >
+              View My Work
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground relative"
+              onClick={() => {
+                window.open('https://drive.google.com/uc?export=download&id=1CLkiys2s1a0RzJ6TZI0x3QFy5dNDfDkm', '_blank');
+              }}
+            >
+              <Download className="w-5 h-5 mr-2" />
+              Download Resume
+              {/* Mouse Animation */}
+              <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 animate-bounce">
+                <div className="w-4 h-6 border-2 border-accent rounded-full flex justify-center">
+                  <div className="w-0.5 h-2 bg-accent rounded-full mt-1 animate-pulse" />
+                </div>
+              </div>
+            </Button>
+            
+            <Button 
+              onClick={() => scrollToSection('contact')}
+              variant="ghost" 
+              size="lg"
+              className="text-foreground hover:text-accent"
+            >
+              <Mail className="w-5 h-5 mr-2" />
+              Contact Me
+            </Button>
           </div>
         </div>
       </div>
