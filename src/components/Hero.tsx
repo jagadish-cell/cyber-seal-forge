@@ -40,7 +40,7 @@ const Hero = () => {
             </p>
             
             {/* Description */}
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+            <p className="text-lg text-muted-foreground mb-16 max-w-2xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
               B.Tech Cyber Security student passionate about ethical hacking, secure web development, 
               and blockchain-based solutions. Turning cybersecurity challenges into innovative solutions.
             </p>
@@ -59,13 +59,19 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+                className="border-accent text-accent hover:bg-accent hover:text-accent-foreground relative"
                 onClick={() => {
                   window.open('https://drive.google.com/uc?export=download&id=1CLkiys2s1a0RzJ6TZI0x3QFy5dNDfDkm', '_blank');
                 }}
               >
                 <Download className="w-5 h-5 mr-2" />
                 Download Resume
+                {/* Mouse Animation */}
+                <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 animate-bounce">
+                  <div className="w-4 h-6 border-2 border-accent rounded-full flex justify-center">
+                    <div className="w-0.5 h-2 bg-accent rounded-full mt-1 animate-pulse" />
+                  </div>
+                </div>
               </Button>
               
               <Button 
@@ -82,7 +88,7 @@ const Hero = () => {
 
           {/* Profile Image */}
           <div className="flex-shrink-0 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <Avatar className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 border-4 border-accent/50 shadow-elegant">
+            <Avatar className="w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 border-4 border-accent/50 shadow-elegant">
               <AvatarImage 
                 src={profileImage} 
                 alt="Bandi Naga Jagadish" 
@@ -91,13 +97,6 @@ const Hero = () => {
                 BJ
               </AvatarFallback>
             </Avatar>
-          </div>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-accent rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse" />
           </div>
         </div>
       </div>
