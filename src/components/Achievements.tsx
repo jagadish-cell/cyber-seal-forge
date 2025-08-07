@@ -43,7 +43,7 @@ const Achievements = () => {
       title: "2nd Place - Engineers Day Project Expo",
       description: "Secured second position at the Engineers Day Project Expo for presenting a comprehensive blockchain-based voting system that demonstrated both technical excellence and practical implementation.",
       date: "2023",
-      category: "Academic",
+      category: "Competition",
       color: "text-blue-400",
       featured: true
     },
@@ -51,7 +51,7 @@ const Achievements = () => {
       icon: Star,
       title: "Outstanding Academic Performance",
       description: "Maintained excellent academic standing throughout the B.Tech program with consistent high grades in cybersecurity and computer science courses.",
-      date: "2021-2024",
+      date: "2022-2026",
       category: "Academic",
       color: "text-green-400",
       featured: false
