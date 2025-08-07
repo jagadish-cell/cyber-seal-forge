@@ -108,12 +108,12 @@ const Skills = () => {
           <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Proficiency Levels</h3>
           <div className="grid md:grid-cols-2 gap-8">
             {[
-              { skill: "Ethical Hacking", level: 85 },
+              { skill: "Ethical Hacking", level: 65 },
               { skill: "React.js Development", level: 90 },
-              { skill: "Python Programming", level: 88 },
-              { skill: "Cybersecurity Analysis", level: 82 },
+              { skill: "Python Programming", level: 60 },
+              { skill: "Cybersecurity Analysis", level: 90 },
               { skill: "Node.js Backend", level: 85 },
-              { skill: "Blockchain Technology", level: 75 }
+              { skill: "Blockchain Technology", level: 60 }
             ].map((item, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex justify-between">
