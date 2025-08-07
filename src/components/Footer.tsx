@@ -93,9 +93,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border/50 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <span>© {currentYear} Built with</span>
-            <Heart className="w-4 h-4 text-red-400 fill-current" />
-            <span>by Bandi Naga Jagadish</span>
+            <span>© {currentYear} Built by Bandi Naga Jagadish</span>
           </div>
           
           <Button

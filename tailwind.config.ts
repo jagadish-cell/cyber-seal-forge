@@ -115,6 +115,13 @@ export default {
 				'typing': {
 					'0%': { width: '0' },
 					'100%': { width: '100%' }
+				},
+				// ✅ NEW: mouse-click keyframe
+				'mouse-click': {
+					'0%': { transform: 'translate(0px, 0px) scale(1)', opacity: '1' },
+					'40%': { transform: 'translate(90px, 40px) scale(0.9)', opacity: '1' },
+					'60%': { transform: 'translate(90px, 40px) scale(1)', opacity: '1' },
+					'100%': { transform: 'translate(90px, 40px)', opacity: '0' }
 				}
 			},
 			animation: {
@@ -122,7 +129,9 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-				'typing': 'typing 3s steps(30, end)'
+				'typing': 'typing 3s steps(30, end)',
+				// ✅ NEW: mouse-click animation
+				'mouse-click': 'mouse-click 2s ease-in-out forwards'
 			}
 		}
 	},
