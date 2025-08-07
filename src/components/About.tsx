@@ -1,7 +1,32 @@
 import { Shield, GraduationCap, Target, Code } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useState, useEffect, useRef } from 'react';
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const highlights = [
     {
       icon: Shield,
@@ -26,8 +51,8 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-dark">
-      <div className="section-container">
+    <section ref={sectionRef} id="about" className="py-20 bg-gradient-dark">
+      <div className={`section-container transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
             About <span className="text-accent">Me</span>
@@ -40,7 +65,7 @@ const About = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Bio */}
-          <div className="space-y-6">
+          <div className={`space-y-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="prose prose-invert max-w-none">
               <p className="text-lg leading-relaxed text-muted-foreground">
                 I'm a 4th-year <span className="text-accent font-semibold">B.Tech Cyber Security</span> student 
@@ -76,7 +101,7 @@ const About = () => {
           </div>
 
           {/* Right Column - Highlights */}
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className={`grid sm:grid-cols-2 gap-6 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             {highlights.map((highlight, index) => (
               <Card key={index} className="cyber-card group hover:scale-105">
                 <CardContent className="p-6 text-center">

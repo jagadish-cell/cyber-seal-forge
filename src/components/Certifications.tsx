@@ -4,8 +4,33 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import ccCertImage from '@/assets/cc-certification.png';
 import webDevCertImage from '@/assets/web-dev-certification.png';
+import { useState, useEffect, useRef } from 'react';
 
 const Certifications = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const certifications = [
     {
       icon: Shield,
@@ -32,8 +57,8 @@ const Certifications = () => {
   ];
 
   return (
-    <section id="certifications" className="py-20">
-      <div className="section-container">
+    <section ref={sectionRef} id="certifications" className="py-20">
+      <div className={`section-container transition-all duration-1000 ${isVisible ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'}`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
             Certifications & <span className="text-accent">Training</span>
@@ -47,9 +72,16 @@ const Certifications = () => {
           {certifications.map((cert, index) => (
             <Card 
               key={index} 
-              className={`cyber-card group hover:scale-105 ${
+              className={`cyber-card group hover:scale-105 transition-all duration-1000 ${
                 cert.featured ? 'ring-2 ring-accent/50' : ''
+              } ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0 rotate-0' 
+                  : 'opacity-0 translate-y-8 -rotate-2'
               }`}
+              style={{ 
+                transitionDelay: isVisible ? `${index * 400}ms` : '0ms' 
+              }}
             >
               <CardHeader className="text-center pb-4">
                 {/* Certification Image */}
@@ -122,7 +154,7 @@ const Certifications = () => {
         </div>
 
         {/* Continuing Education */}
-        <div className="mt-16 text-center">
+        <div className={`mt-16 text-center transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
           <Card className="cyber-card max-w-4xl mx-auto">
             <CardContent className="p-8">
               <Award className="w-12 h-12 text-accent mx-auto mb-4" />

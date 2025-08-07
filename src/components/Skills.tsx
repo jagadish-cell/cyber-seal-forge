@@ -1,8 +1,33 @@
 import { Shield, Code, Database, Globe } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useState, useEffect, useRef } from 'react';
 
 const Skills = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const skillCategories = [
     {
       icon: Shield,
@@ -31,8 +56,8 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20">
-      <div className="section-container">
+    <section ref={sectionRef} id="skills" className="py-20">
+      <div className={`section-container transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
             My <span className="text-accent">Skills</span>
@@ -44,7 +69,17 @@ const Skills = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((category, index) => (
-            <Card key={index} className="cyber-card group hover:scale-105">
+            <Card 
+              key={index} 
+              className={`cyber-card group hover:scale-105 transition-all duration-700 ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-4'
+              }`}
+              style={{ 
+                transitionDelay: isVisible ? `${index * 200}ms` : '0ms' 
+              }}
+            >
               <CardHeader className="text-center pb-4">
                 <category.icon className={`w-12 h-12 mx-auto mb-3 ${category.color} group-hover:animate-glow-pulse`} />
                 <CardTitle className="text-lg font-semibold text-foreground">
@@ -69,7 +104,7 @@ const Skills = () => {
         </div>
 
         {/* Progress Bars for Key Skills */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div className={`mt-16 max-w-4xl mx-auto transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Proficiency Levels</h3>
           <div className="grid md:grid-cols-2 gap-8">
             {[

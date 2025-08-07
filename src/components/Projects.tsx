@@ -2,8 +2,33 @@ import { ExternalLink, Github, Shield, Vote } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useState, useEffect, useRef } from 'react';
 
 const Projects = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const projects = [
     {
       icon: Vote,
@@ -38,8 +63,8 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gradient-dark">
-      <div className="section-container">
+    <section ref={sectionRef} id="projects" className="py-20 bg-gradient-dark">
+      <div className={`section-container transition-all duration-1000 ${isVisible ? 'opacity-100 rotate-0' : 'opacity-0 rotate-1'}`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
             Featured <span className="text-accent">Projects</span>
@@ -51,7 +76,17 @@ const Projects = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="cyber-card group hover:scale-105">
+            <Card 
+              key={index} 
+              className={`cyber-card group hover:scale-105 transition-all duration-1000 ${
+                isVisible 
+                  ? 'opacity-100 scale-100 rotate-0' 
+                  : 'opacity-0 scale-75 rotate-3'
+              }`}
+              style={{ 
+                transitionDelay: isVisible ? `${index * 300}ms` : '0ms' 
+              }}
+            >
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex items-center space-x-3">
@@ -134,7 +169,7 @@ const Projects = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-12">
+        <div className={`text-center mt-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-muted-foreground mb-6">
             Want to see more of my work or collaborate on a project?
           </p>

@@ -1,8 +1,33 @@
 import { Trophy, Medal, Star, Users, Calendar, Award } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useState, useEffect, useRef } from 'react';
 
 const Achievements = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const achievements = [
     {
       icon: Trophy,
@@ -50,8 +75,8 @@ const Achievements = () => {
   ];
 
   return (
-    <section id="achievements" className="py-20 bg-gradient-dark">
-      <div className="section-container">
+    <section ref={sectionRef} id="achievements" className="py-20 bg-gradient-dark">
+      <div className={`section-container transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
             Achievements & <span className="text-accent">Recognition</span>
@@ -64,7 +89,17 @@ const Achievements = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {stats.map((stat, index) => (
-            <Card key={index} className="cyber-card text-center group hover:scale-105">
+            <Card 
+              key={index} 
+              className={`cyber-card text-center group hover:scale-105 transition-all duration-700 ${
+                isVisible 
+                  ? 'opacity-100 scale-100' 
+                  : 'opacity-0 scale-75'
+              }`}
+              style={{ 
+                transitionDelay: isVisible ? `${index * 150}ms` : '0ms' 
+              }}
+            >
               <CardContent className="p-6">
                 <stat.icon className="w-8 h-8 text-accent mx-auto mb-3 group-hover:animate-glow-pulse" />
                 <div className="text-3xl font-bold text-foreground mb-1">{stat.value}</div>
@@ -79,7 +114,17 @@ const Achievements = () => {
           <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Featured Achievements</h3>
           <div className="grid md:grid-cols-2 gap-8">
             {achievements.filter(achievement => achievement.featured).map((achievement, index) => (
-              <Card key={index} className="cyber-card group hover:scale-105 ring-2 ring-accent/50">
+              <Card 
+                key={index} 
+                className={`cyber-card group hover:scale-105 ring-2 ring-accent/50 transition-all duration-1000 ${
+                  isVisible 
+                    ? 'opacity-100 translate-x-0 rotate-0' 
+                    : 'opacity-0 -translate-x-8 -rotate-2'
+                }`}
+                style={{ 
+                  transitionDelay: isVisible ? `${index * 300 + 600}ms` : '0ms' 
+                }}
+              >
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex items-center space-x-3">
@@ -114,7 +159,17 @@ const Achievements = () => {
           <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Additional Recognition</h3>
           <div className="grid md:grid-cols-2 gap-6">
             {achievements.filter(achievement => !achievement.featured).map((achievement, index) => (
-              <Card key={index} className="cyber-card group hover:scale-105">
+              <Card 
+                key={index} 
+                className={`cyber-card group hover:scale-105 transition-all duration-800 ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-4'
+                }`}
+                style={{ 
+                  transitionDelay: isVisible ? `${index * 200 + 1200}ms` : '0ms' 
+                }}
+              >
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <achievement.icon className={`w-8 h-8 ${achievement.color} mt-1 group-hover:animate-glow-pulse`} />
@@ -140,7 +195,7 @@ const Achievements = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
+        <div className={`text-center mt-16 transition-all duration-1000 delay-[1600ms] ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
           <Card className="cyber-card max-w-2xl mx-auto">
             <CardContent className="p-8">
               <Trophy className="w-12 h-12 text-accent mx-auto mb-4" />
