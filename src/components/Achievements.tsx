@@ -33,7 +33,7 @@ const Achievements = () => {
       icon: Trophy,
       title: "1st Place - College Hackathon",
       description: "Won first place in the annual college hackathon by developing an innovative cybersecurity solution that impressed judges with its technical complexity and real-world applicability.",
-      date: "2024",
+      date: "2025",
       category: "Competition",
       color: "text-yellow-400",
       featured: true
@@ -42,7 +42,7 @@ const Achievements = () => {
       icon: Medal,
       title: "2nd Place - Engineers Day Project Expo",
       description: "Secured second position at the Engineers Day Project Expo for presenting a comprehensive blockchain-based voting system that demonstrated both technical excellence and practical implementation.",
-      date: "2023",
+      date: "2024",
       category: "Competition",
       color: "text-blue-400",
       featured: true
