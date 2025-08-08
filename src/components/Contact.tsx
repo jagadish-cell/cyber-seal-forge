@@ -96,8 +96,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic validation
+
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Error",
@@ -126,7 +125,6 @@ const Contact = () => {
         description: "Thank you for your message. I'll get back to you soon!",
       });
 
-      // Reset form
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('EmailJS error:', error);
@@ -141,8 +139,8 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-20">
-      <div className={`section-container transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+    <section ref={sectionRef} id="contact" className="py-20 overflow-x-hidden">
+      <div className={`section-container transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} max-w-full px-4`}>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
             Get In <span className="text-accent">Touch</span>
@@ -152,7 +150,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Information */}
           <div className={`space-y-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 -translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div>
@@ -168,7 +166,7 @@ const Contact = () => {
                           {info.href !== "#" ? (
                             <a 
                               href={info.href}
-                              className="text-foreground hover:text-accent transition-colors font-medium"
+                              className="text-foreground hover:text-accent transition-colors font-medium break-all"
                             >
                               {info.value}
                             </a>
@@ -186,7 +184,7 @@ const Contact = () => {
             {/* Social Links */}
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-6">Connect With Me</h3>
-              <div className="flex space-x-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 {socialLinks.map((social, index) => (
                   <Button
                     key={index}
