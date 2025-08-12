@@ -2,8 +2,8 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ArrowRight, Download, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import heroBg from '@/assets/hero-bg.webp';
 import profileImage from '@/assets/profile.jpg';
+import ThreeBackground from './ThreeBackground';
 
 const Hero = () => {
   const [isHomeVisible, setIsHomeVisible] = useState(true);
@@ -37,14 +37,11 @@ const Hero = () => {
         id="home"
         className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0"
       >
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        />
+        {/* 3D Animated Background */}
+        <ThreeBackground />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-background/70" />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-background/40" />
 
         {/* Content */}
         <div className="relative z-10 section-container">
