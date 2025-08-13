@@ -58,12 +58,13 @@ const Hero = () => {
                 animationFillMode: 'both'
               }}
             >
-              <Avatar className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-72 lg:h-72 border-4 border-accent/50 shadow-elegant">
+              <Avatar className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 border-4 border-accent/50 shadow-elegant">
                 <AvatarImage src={profileImage} alt="Bandi Naga Jagadish" />
                 <AvatarFallback className="text-3xl font-bold bg-accent/20 text-accent">
-                  BJ
+                 BJ
                 </AvatarFallback>
               </Avatar>
+
             </div>
 
             {/* Text Content */}
