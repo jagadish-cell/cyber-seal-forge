@@ -1,6 +1,7 @@
 import { Shield, GraduationCap, Target, Code } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { useState, useEffect, useRef } from 'react';
+import profileImage from '@/assets/profile.jpg';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -63,9 +64,21 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Bio */}
-          <div className={`space-y-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+        <div className="grid lg:grid-cols-3 gap-12 items-center">
+          {/* Profile Image */}
+          <div className={`flex justify-center transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-accent to-purple-500 rounded-full animate-pulse opacity-20"></div>
+              <img 
+                src={profileImage} 
+                alt="Bandi Naga Jagadish" 
+                className="relative w-64 h-64 rounded-full object-cover border-4 border-accent/30 shadow-2xl shadow-accent/20 hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          {/* Bio Content */}
+          <div className={`lg:col-span-2 space-y-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="prose prose-invert max-w-none">
               <p className="text-lg leading-relaxed text-muted-foreground">
                 I'm a 4th-year <span className="text-accent font-semibold">B.Tech Cyber Security</span> student 
@@ -100,9 +113,11 @@ const About = () => {
             </Card>
           </div>
 
-          {/* Right Column - Highlights */}
-          <div className={`grid sm:grid-cols-2 gap-6 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            {highlights.map((highlight, index) => (
+        </div>
+
+        {/* Highlights Section */}
+        <div className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {highlights.map((highlight, index) => (
               <Card key={index} className="cyber-card group hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <highlight.icon className="w-12 h-12 text-accent mx-auto mb-4 group-hover:animate-glow-pulse" />
@@ -114,8 +129,7 @@ const About = () => {
                   </p>
                 </CardContent>
               </Card>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
