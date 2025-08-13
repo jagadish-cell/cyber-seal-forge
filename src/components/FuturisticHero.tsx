@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ArrowRight, Download, Mail } from 'lucide-react';
@@ -42,53 +41,75 @@ const Hero = () => {
 
   return (
     <>
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0"
+      >
         {/* Background Image */}
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-        backgroundImage: `url(${heroBg})`
-      }} />
-        
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${heroBg})`
+          }}
+        />
+
         {/* Overlay */}
         <div className="absolute inset-0 bg-background/70" />
-        
+
         {/* Content */}
         <div className="relative z-10 section-container">
           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
             {/* Content Section */}
             <div className="flex-1 text-center lg:text-left animate-fade-in">
               {/* Name */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-glow" style={{
-              animationDelay: '0.2s',
-              animationFillMode: 'both'
-            }}>
+              <h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-glow"
+                style={{
+                  animationDelay: '0.2s',
+                  animationFillMode: 'both'
+                }}
+              >
                 Hi, I'm Bandi Naga Jagadish
               </h1>
-              
+
               {/* Subtitle */}
-              <p className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-in" style={{
-              animationDelay: '0.4s',
-              animationFillMode: 'both'
-            }}>
+              <p
+                className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-in"
+                style={{
+                  animationDelay: '0.4s',
+                  animationFillMode: 'both'
+                }}
+              >
                 Cybersecurity Enthusiast & Full Stack Developer
               </p>
-              
+
               {/* Description */}
-              <p className="text-lg text-muted-foreground mb-16 max-w-2xl mx-auto lg:mx-0 animate-fade-in" style={{
-              animationDelay: '0.6s',
-              animationFillMode: 'both'
-            }}>
-                B.Tech Cyber Security student passionate about ethical hacking, secure web development, 
-                and blockchain-based solutions. Turning cybersecurity challenges into innovative solutions.
+              <p
+                className="text-lg text-muted-foreground mb-16 max-w-2xl mx-auto lg:mx-0 animate-fade-in"
+                style={{
+                  animationDelay: '0.6s',
+                  animationFillMode: 'both'
+                }}
+              >
+                B.Tech Cyber Security student passionate about ethical hacking,
+                secure web development, and blockchain-based solutions. Turning
+                cybersecurity challenges into innovative solutions.
               </p>
             </div>
 
             {/* Profile Image */}
-            <div className="flex-shrink-0 animate-fade-in" style={{
-            animationDelay: '0.2s',
-            animationFillMode: 'both'
-          }}>
+            <div
+              className="flex-shrink-0 animate-fade-in"
+              style={{
+                animationDelay: '0.2s',
+                animationFillMode: 'both'
+              }}
+            >
               <Avatar className="w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 border-4 border-accent/50 shadow-elegant">
-                <AvatarImage src={profileImage} alt="Bandi Naga Jagadish" />
+                <AvatarImage
+                  src={profileImage}
+                  alt="Bandi Naga Jagadish"
+                />
                 <AvatarFallback className="text-3xl font-bold bg-accent/20 text-accent">
                   BJ
                 </AvatarFallback>
@@ -98,9 +119,9 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* CTA Buttons - Only show when home section is visible */}
+      {/* CTA Buttons - Only show when home section is visible and on medium+ screens */}
       {isHomeVisible && (
-        <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4 pb-4 bg-background/80 backdrop-blur-md z-50">
+        <div className="hidden md:block fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4 pb-4 bg-background/80 backdrop-blur-md z-50">
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in"
             style={{
@@ -108,7 +129,11 @@ const Hero = () => {
               animationFillMode: 'both'
             }}
           >
-            <Button onClick={() => scrollToSection('projects')} className="btn-hero group" size="lg">
+            <Button
+              onClick={() => scrollToSection('projects')}
+              className="btn-hero group"
+              size="lg"
+            >
               View My Work
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
