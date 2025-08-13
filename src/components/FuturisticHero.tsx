@@ -1,6 +1,5 @@
 import React, { useRef, useMemo, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { EffectComposer, Bloom, DepthOfField } from '@react-three/postprocessing';
 import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { Button } from '@/components/ui/button';
@@ -282,22 +281,8 @@ const Scene3D = () => {
       <CentralSphere />
       <ParticleField />
 
-      {/* Post-processing effects */}
-      {settings.enablePostprocessing && (
-        <EffectComposer>
-          <Bloom
-            intensity={settings.bloomIntensity}
-            luminanceThreshold={0.1}
-            luminanceSmoothing={0.9}
-            height={300}
-          />
-          <DepthOfField
-            focusDistance={0.02}
-            focalLength={0.05}
-            bokehScale={3}
-          />
-        </EffectComposer>
-      )}
+      {/* Fog for depth and atmosphere */}
+      <fog attach="fog" args={['#000000', 15, 60]} />
     </>
   );
 };
