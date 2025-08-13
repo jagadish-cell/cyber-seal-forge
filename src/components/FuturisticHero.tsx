@@ -13,29 +13,21 @@ const Hero = () => {
       ([entry]) => {
         setIsHomeVisible(entry.isIntersecting);
       },
-      {
-        threshold: 0.3
-      }
+      { threshold: 0.3 }
     );
 
     const homeSection = document.getElementById('home');
-    if (homeSection) {
-      observer.observe(homeSection);
-    }
+    if (homeSection) observer.observe(homeSection);
 
     return () => {
-      if (homeSection) {
-        observer.unobserve(homeSection);
-      }
+      if (homeSection) observer.unobserve(homeSection);
     };
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -43,14 +35,12 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-0"
       >
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${heroBg})`
-          }}
+          style={{ backgroundImage: `url(${heroBg})` }}
         />
 
         {/* Overlay */}
@@ -59,11 +49,27 @@ const Hero = () => {
         {/* Content */}
         <div className="relative z-10 section-container">
           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-            {/* Content Section */}
-            <div className="flex-1 text-center lg:text-left animate-fade-in">
-              {/* Name */}
+            
+            {/* Profile Image - show first on mobile */}
+            <div
+              className="flex-shrink-0 animate-fade-in order-1 lg:order-2"
+              style={{
+                animationDelay: '0.2s',
+                animationFillMode: 'both'
+              }}
+            >
+              <Avatar className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-72 lg:h-72 border-4 border-accent/50 shadow-elegant">
+                <AvatarImage src={profileImage} alt="Bandi Naga Jagadish" />
+                <AvatarFallback className="text-3xl font-bold bg-accent/20 text-accent">
+                  BJ
+                </AvatarFallback>
+              </Avatar>
+            </div>
+
+            {/* Text Content */}
+            <div className="flex-1 text-center lg:text-left animate-fade-in order-2 lg:order-1">
               <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-glow"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-6 lg:mt-0 mb-6 text-glow"
                 style={{
                   animationDelay: '0.2s',
                   animationFillMode: 'both'
@@ -72,9 +78,8 @@ const Hero = () => {
                 Hi, I'm Bandi Naga Jagadish
               </h1>
 
-              {/* Subtitle */}
               <p
-                className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-in"
+                className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4"
                 style={{
                   animationDelay: '0.4s',
                   animationFillMode: 'both'
@@ -83,9 +88,8 @@ const Hero = () => {
                 Cybersecurity Enthusiast & Full Stack Developer
               </p>
 
-              {/* Description */}
               <p
-                className="text-lg text-muted-foreground mb-16 max-w-2xl mx-auto lg:mx-0 animate-fade-in"
+                className="text-base sm:text-lg text-muted-foreground mb-12 max-w-2xl mx-auto lg:mx-0"
                 style={{
                   animationDelay: '0.6s',
                   animationFillMode: 'both'
@@ -96,30 +100,11 @@ const Hero = () => {
                 cybersecurity challenges into innovative solutions.
               </p>
             </div>
-
-            {/* Profile Image */}
-            <div
-              className="flex-shrink-0 animate-fade-in"
-              style={{
-                animationDelay: '0.2s',
-                animationFillMode: 'both'
-              }}
-            >
-              <Avatar className="w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 border-4 border-accent/50 shadow-elegant">
-                <AvatarImage
-                  src={profileImage}
-                  alt="Bandi Naga Jagadish"
-                />
-                <AvatarFallback className="text-3xl font-bold bg-accent/20 text-accent">
-                  BJ
-                </AvatarFallback>
-              </Avatar>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Buttons - Only show when home section is visible and on medium+ screens */}
+      {/* CTA Buttons - Only on medium+ screens */}
       {isHomeVisible && (
         <div className="hidden md:block fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4 pb-4 bg-background/80 backdrop-blur-md z-50">
           <div
